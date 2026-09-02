@@ -127,6 +127,6 @@ The repository includes the authored React/CSS layer and reviewed `data.json`. T
 - Developed an interactive seven-view dashboard for performance, volatility, drawdown, VaR, correlation, beta, lead–lag, and portfolio optimization analysis.
 - Implemented long-only mean–variance portfolios with a 15% position cap, comparing Equal Weight, Sector Equal, Maximum Sharpe, and Minimum Variance strategies against the S&P 500 while documenting in-sample and rebalancing limitations.
 
-## Disclaimer
+## Disclaime
 
 This project is for educational and portfolio-demonstration purposes only. Historical results do not predict future performance and do not constitute investment advice.
