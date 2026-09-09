@@ -1,105 +1,69 @@
-# Tech Finance Analytics Dashboard
+# Tech Finance Analytics — Market Yearbook
 
-[![Live Dashboard](https://img.shields.io/badge/Live_Dashboard-Open-2563EB?style=for-the-badge)](https://key07211.github.io/tech-finance-analytics-dashboard/)
+**[Open the interactive research story](https://key07211.github.io/tech-finance-analytics-dashboard/)**
 
-An end-to-end quantitative finance project analyzing **35 technology and clean-energy stocks**, **3 thematic sectors**, and **6 market benchmarks** across **251 trading days** from May 12, 2025 through May 11, 2026. The project combines reproducible Python analysis with a self-contained, interactive dashboard designed for portfolio presentation.
+## 未来的想象，市场的回答
 
-## Live dashboard
+我对 AI、半导体与新能源充满好奇。在我的观察中，这些方向吸引了大量投资，也承载着对未来的期待。那么，这份期待在上市公司的股价里，会呈现怎样的模样？
 
-**[Open the interactive dashboard](https://key07211.github.io/tech-finance-analytics-dashboard/)**
+This project explores **35 selected listed companies** across **251 trading days, May 12, 2025–May 11, 2026**. The GitHub Pages homepage is a six-chapter Chinese interactive story designed for readers without a finance background.
 
-The presentation-only dashboard includes seven views:
+1. **选择 / The watchlist:** author motivation, theme groups and company selection.
+2. **全景 / The big picture:** comparable historical paths with a date slider and market reference.
+3. **分化 / Beneath the average:** company-level distributions, medians and a largest-winner exclusion experiment.
+4. **转折 / Turning points:** three data-backed checkpoints in the year.
+5. **路径 / The path matters:** final returns, drawdowns and recovery, with full-path/endpoints comparison.
+6. **回望 / What the year left us:** theme observations and a selected-company recap.
 
-- **Overview** — market and sector performance, headline metrics, and portfolio comparison
-- **Performance** — return/volatility positioning, monthly-return heatmap, and sortable security table
-- **Risk** — drawdowns, historical VaR, volatility spikes, Sortino, and Calmar ratios
-- **Relationships** — stock-pair correlations, beta, alpha, and S&P 500 sensitivity
-- **Lead–lag** — exploratory lagged correlations and leadership scores
-- **Portfolio lab** — optimized weights, cumulative return paths, Sharpe comparison, and portfolio scorecard
-- **Method** — metric definitions, assumptions, data coverage, and limitations
+## What the selected sample shows
 
-Charts support hover tooltips, sector filtering, tab navigation, and sortable evidence tables. All financial units and number formats use English conventions.
+- All **10 semiconductor sample stocks** ended the period higher.
+- **5 of 12 AI sample stocks** rose; the median return was approximately **−3.0%**.
+- **8 of 13 new-energy sample stocks** rose. Mean return was approximately **142.9%**, versus a median of **39.8%**; excluding Bloom Energy reduces the mean to approximately **38.0%**.
+- Bloom Energy ended approximately **1,401.4%** higher, but experienced a maximum drawdown of approximately **45.9%**. A final return alone does not describe the path.
 
-## Project scope
+These are observations about the selected sample, not entire industries or future returns. Groups follow the original project taxonomy (for example, NVIDIA belongs to AI).
 
-| Group | Count | Coverage |
-|---|---:|---|
-| AI | 12 | NVDA, MSFT, GOOGL, META, AMZN, CRM, PLTR, AI, SNOW, IBM, SMCI, ORCL |
-| Semiconductors | 10 | AMD, INTC, TSM, AVGO, QCOM, TXN, MU, MRVL, ARM, ASML |
-| New Energy | 13 | TSLA, ENPH, SEDG, FSLR, RUN, PLUG, BE, NEE, RIVN, LCID, NIO, LI, XPEV |
-| Benchmarks | 6 | S&P 500, NASDAQ, Dow Jones, Russell 2000, VIX, PHLX Semiconductor |
+## Coverage
 
-## Analytical workflow
+| Group | Companies |
+|---|---|
+| AI (12) | NVDA, MSFT, GOOGL, META, AMZN, CRM, PLTR, AI, SNOW, IBM, SMCI, ORCL |
+| Semiconductors (10) | AMD, INTC, TSM, AVGO, QCOM, TXN, MU, MRVL, ARM, ASML |
+| New Energy (13) | TSLA, ENPH, SEDG, FSLR, RUN, PLUG, BE, NEE, RIVN, LCID, NIO, LI, XPEV |
 
-1. Downloaded and validated daily OHLCV market data.
-2. Calculated daily, monthly, annualized, and cumulative price returns.
-3. Measured annualized volatility, rolling volatility spikes, drawdowns, and historical/parametric VaR.
-4. Evaluated Sharpe, Sortino, Calmar, beta, alpha, and Treynor metrics.
-5. Analyzed within-sector and cross-sector return correlations.
-6. Tested one-to-five-day lead–lag relationships as exploratory evidence.
-7. Constructed Equal Weight, Sector Equal, Maximum Sharpe, and Minimum Variance portfolios.
-8. Converted reviewed CSV outputs into a portable interactive dashboard.
+The original analysis also includes six market reference series. The story uses the S&P 500 as its market comparison.
 
-## Selected findings
+## Rebuild the homepage
 
-- **Bloom Energy (BE)** produced the highest historical price return at **1,401.43%**, followed by **Micron (MU) at 763.83%** and **Intel (INTC) at 483.59%**. These extreme outcomes demonstrate both the upside and concentration risk in thematic portfolios.
-- The **Equal Weight portfolio returned 75.59%**, while the **Sector Equal portfolio returned 80.90%**, compared with **26.84% for the S&P 500** over the same period.
-- The in-sample **Maximum Sharpe portfolio returned 364.75%**, with **35.10% annualized volatility**, a **4.46 Sharpe ratio**, and a **−13.61% maximum drawdown**.
-- The **Minimum Variance portfolio reduced annualized volatility to 14.18%**, compared with 27.42% for Equal Weight, but its total return was lower at 21.56%.
-- The strongest reviewed same-day relationships included **TSM/ASML at 0.6506** and **NVDA/TSM at 0.6227**, highlighting meaningful semiconductor ecosystem co-movement.
-- Lead–lag correlations were weak and exploratory. They should not be interpreted as causal relationships or production trading signals.
-
-## Portfolio methodology
-
-For stock \(i\) on day \(t\), daily return is:
-
-```text
-r(i,t) = Close(i,t) / Close(i,t-1) - 1
+```sh
+python dashboard/story/build_story.py
 ```
 
-Portfolio daily return is the weighted sum of component returns:
+Python 3.9+ with the standard library is sufficient. This generates a self-contained `docs/index.html` from the committed market data. It works on GitHub Pages without npm, API keys, external chart libraries, or runtime data fetching. See [source and methodology](dashboard/story/README.md).
+
+## Repository
 
 ```text
-r(p,t) = Σ w(i) × r(i,t)
+analysis/                 Original Python research, notebook, market CSVs and outputs
+dashboard/story/          Current narrative homepage source and build script
+dashboard/src/            Earlier dashboard source, retained for reference
+docs/index.html           Current self-contained GitHub Pages homepage
 ```
 
-Cumulative portfolio return is compounded through time:
+## Method and interpretation
 
-```text
-R(p,T) = Π [1 + r(p,t)] - 1
-```
+The story rebases each saved Close series to 100. Theme paths average these rebased series, equivalent to **equal allocations at the start, then holding without rebalancing**. This keeps the theme endpoint equal to its members' mean return. It differs from the earlier daily-rebalanced portfolios in `analysis/portfolio.py`.
 
-Optimization constraints:
+The source downloader used yfinance without explicitly fixing `auto_adjust`. The story uses saved Close values as supplied and does not claim a separately verified dividend convention. Cash examples are proportional illustrations without fees or taxes. The selected universe and single historical period limit generalization; price co-movement does not establish event causality.
 
-- Long-only weights
-- Portfolio weights sum to 100%
-- Maximum position size of 15%
-- Annual risk-free rate of 5% for Sharpe calculations
+Original quantitative research remains available: returns, volatility, correlations, beta, lead–lag, risk ratios and portfolio optimization. Maximum Sharpe and Minimum Variance portfolios were fitted and evaluated on the same sample; their results are in-sample, not forecasts. Original portfolio assumptions include long-only weights, a 15% position cap, a 5% annual risk-free rate and daily target-weight rebalancing before costs.
 
-The backtest applies constant target weights to daily returns, which is equivalent to daily rebalancing before transaction costs. Maximum Sharpe and Minimum Variance portfolios are fitted and evaluated on the same historical sample; their results are **in-sample**, not forecasts of future performance.
+## Run the original analysis
 
-## Technology
-
-- **Python:** pandas, NumPy, SciPy, yfinance
-- **Analytics:** return attribution, volatility, VaR, drawdown, beta, correlation, mean–variance optimization
-- **Visualization:** Matplotlib, Seaborn, React, Recharts
-- **Delivery:** self-contained HTML and GitHub Pages
-
-## Repository structure
-
-```text
-analysis/               Python scripts, notebook, market data, and chart outputs
-dashboard/              Interactive dashboard source and reviewed data generator
-docs/index.html         Self-contained GitHub Pages dashboard
-README.md               Project narrative, methodology, and findings
-```
-
-## Run the analysis
-
-```bash
+```sh
 cd analysis
 python -m pip install -r requirements.txt
-python download_data.py
 python EDA.py
 python candlestick.py
 python returns.py
@@ -110,23 +74,7 @@ python risk.py
 python portfolio.py
 ```
 
-## Rebuild the dashboard
+`download_data.py` retrieves a rolling year relative to the day it runs. Running it changes the historical snapshot; the authored story must be reviewed before changing its date coverage.
 
-```bash
-cd dashboard
-python generate_dashboard_data.py
-```
+This project is for education and portfolio demonstration. Historical results do not predict future performance.
 
-The repository includes the authored React/CSS layer and reviewed `data.json`. The compiled, self-contained presentation is committed as `docs/index.html` for GitHub Pages.
-
-## Resume-ready summary
-
-**Tech Finance Analytics Dashboard — Python, pandas, SciPy, React, Recharts**
-
-- Built an end-to-end quantitative research pipeline covering 35 AI, semiconductor, and new-energy stocks plus six market benchmarks across 251 trading days.
-- Developed an interactive seven-view dashboard for performance, volatility, drawdown, VaR, correlation, beta, lead–lag, and portfolio optimization analysis.
-- Implemented long-only mean–variance portfolios with a 15% position cap, comparing Equal Weight, Sector Equal, Maximum Sharpe, and Minimum Variance strategies against the S&P 500 while documenting in-sample and rebalancing limitations.
-
-## Disclaime
-
-This project is for educational and portfolio-demonstration purposes only. Historical results do not predict future performance and do not constitute investment advice.
