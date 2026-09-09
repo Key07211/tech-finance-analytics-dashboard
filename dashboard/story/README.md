@@ -1,6 +1,6 @@
 # Market Yearbook — narrative GitHub Pages source
 
-A six-chapter Chinese interactive research story for readers without finance experience. The author's curiosity motivates the opening; the ending summarizes the observed year in the selected AI, semiconductor and new-energy stocks.
+A seven-chapter English interactive research story for readers without finance experience. The author's curiosity motivates the opening; the ending summarizes the observed year in the selected AI, semiconductor and new-energy stocks.
 
 ## Rebuild
 
@@ -19,9 +19,10 @@ GitHub Pages continues to serve the existing `docs` directory. Source edits belo
 1. Personal research motivation, three theme groups, and 35 company cards.
 2. Rebased historical theme paths, S&P 500 reference, date slider, selected-company overlay.
 3. Within-theme return distributions; winner-exclusion experiment; median toggle.
-4. Three reviewed historical checkpoints (October 29, March 30, and May 11).
-5. Selected company's full path versus endpoints, maximum drawdown and recovery.
-6. Three theme-level historical observations and a personalized recap card.
+4. AI/semiconductor daily-return correlations: group comparisons, 120-cell matrix, selectable pairs, scatter and rolling 30/60-day views.
+5. Three reviewed historical checkpoints (October 29, March 30, and May 11).
+6. Selected company's full path versus endpoints, maximum drawdown and recovery.
+7. Three theme-level historical observations and a personalized recap card.
 
 Native controls, keyboard-accessible company selectors, reduced-motion styles, mobile breakpoints, and source/method disclosures are included. The earlier React dashboard files remain in the repository for historical reference but do not generate this homepage.
 
@@ -39,4 +40,6 @@ Native controls, keyboard-accessible company selectors, reduced-motion styles, m
 ## Validation
 
 The build checks stock coverage, date consistency and positive finite observations. Source JavaScript can be checked with `node --check dashboard/story/app.js`. Check the winner-exclusion experiment, time slider, company selection, path toggle and recap synchronization after interaction changes.
+
+Correlation functions are in `correlation.js`, embedded before the renderer. After rebuilding, run `node dashboard/story/test-correlation.cjs` to check edge cases, rolling-window boundaries, English-only output and all 231 pairs against the original analysis CSV.
 

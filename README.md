@@ -2,21 +2,23 @@
 
 **[Open the interactive research story](https://key07211.github.io/tech-finance-analytics-dashboard/)**
 
-## 未来的想象，市场的回答
+## Future expectations. Market realities.
 
-我对 AI、半导体与新能源充满好奇。在我的观察中，这些方向吸引了大量投资，也承载着对未来的期待。那么，这份期待在上市公司的股价里，会呈现怎样的模样？
+I am curious about AI, semiconductors and new energy. These fields caught my attention through the investment and optimism surrounding their future. How would those expectations show up in the share prices of listed companies?
 
-This project explores **35 selected listed companies** across **251 trading days, May 12, 2025–May 11, 2026**. The GitHub Pages homepage is a six-chapter Chinese interactive story designed for readers without a finance background.
+This project explores **35 selected listed companies** across **251 trading days, May 12, 2025–May 11, 2026**. The GitHub Pages homepage is a seven-chapter English interactive story designed for readers without a finance background.
 
-1. **选择 / The watchlist:** author motivation, theme groups and company selection.
-2. **全景 / The big picture:** comparable historical paths with a date slider and market reference.
-3. **分化 / Beneath the average:** company-level distributions, medians and a largest-winner exclusion experiment.
-4. **转折 / Turning points:** three data-backed checkpoints in the year.
-5. **路径 / The path matters:** final returns, drawdowns and recovery, with full-path/endpoints comparison.
-6. **回望 / What the year left us:** theme observations and a selected-company recap.
+1. **The watchlist:** research motivation, theme groups and company selection.
+2. **The big picture:** historical paths, a date slider and market reference.
+3. **Beneath the average:** distributions, medians and winner exclusion.
+4. **Correlation:** test the expected AI/chip link using all 120 cross-theme pairs, selected-pair scatters and rolling 30/60-day correlations.
+5. **Turning points:** three data-backed checkpoints in the year.
+6. **The path matters:** returns, drawdowns and recovery, with full-path/endpoints comparison.
+7. **Looking back:** theme observations and a company recap.
 
 ## What the selected sample shows
 
+- Mean daily-return Pearson correlation across the **120 AI–semiconductor pairs** is **0.2073**, compared with **0.2634 within AI** and **0.3820 within semiconductors**. The two groups' average daily returns correlate at **0.5554**: uneven stock-level links do not mean no aggregate co-movement.
 - All **10 semiconductor sample stocks** ended the period higher.
 - **5 of 12 AI sample stocks** rose; the median return was approximately **−3.0%**.
 - **8 of 13 new-energy sample stocks** rose. Mean return was approximately **142.9%**, versus a median of **39.8%**; excluding Bloom Energy reduces the mean to approximately **38.0%**.
@@ -77,4 +79,8 @@ python portfolio.py
 `download_data.py` retrieves a rolling year relative to the day it runs. Running it changes the historical snapshot; the authored story must be reviewed before changing its date coverage.
 
 This project is for education and portfolio demonstration. Historical results do not predict future performance.
+
+## Correlation validation
+
+Run `node dashboard/story/test-correlation.cjs` after building. It reconciles every one of the original 231 pair coefficients within their four-decimal rounding tolerance and checks zero-variance handling, rolling-window boundaries and English-only page output. Pair coefficients use 250 aligned daily returns, not price levels; group averages of coefficients are distinct from correlations of equal-weight average daily returns.
 

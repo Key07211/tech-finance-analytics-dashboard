@@ -41,7 +41,7 @@ def main():
         stock['dates'] = [datetime.strptime(d, '%Y/%m/%d' if '/' in d else '%Y-%m-%d').strftime('%Y-%m-%d') for d in stock['dates']]
     validate(data)
     html = (SOURCE / 'index.template.html').read_text(encoding='utf-8')
-    for marker, content in [('/* STYLES */', (SOURCE/'style.css').read_text(encoding='utf-8')), ('/* DATA */', json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')), ('/* APP */', (SOURCE/'app.js').read_text(encoding='utf-8'))]:
+    for marker, content in [('/* STYLES */', (SOURCE/'style.css').read_text(encoding='utf-8')), ('/* DATA */', json.dumps(data, ensure_ascii=False, separators=(',', ':')).replace('<', '\\u003c')), ('/* APP */', (SOURCE/'correlation.js').read_text(encoding='utf-8') + '\n' + (SOURCE/'app.js').read_text(encoding='utf-8'))]:
         assert html.count(marker) == 1
         html = html.replace(marker, content)
     args.output.parent.mkdir(parents=True, exist_ok=True)
