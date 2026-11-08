@@ -6,15 +6,16 @@
 
 I am curious about AI, semiconductors and new energy. These fields caught my attention through the investment and optimism surrounding their future. How would those expectations show up in the share prices of listed companies?
 
-This project explores **35 selected listed companies** across **251 trading days, May 12, 2025–May 11, 2026**. The GitHub Pages homepage is a seven-chapter English interactive story designed for readers without a finance background.
+This project explores **35 selected listed companies** across **251 trading days, May 12, 2025–May 11, 2026**. The GitHub Pages homepage is an eight-point, Tableau-style interactive story dashboard for readers without a finance background: an overview page, then seven chapters.
 
-1. **The watchlist:** research motivation, theme groups and company selection.
-2. **The big picture:** historical paths, a date slider and market reference.
-3. **Beneath the average:** distributions, medians and winner exclusion.
-4. **Correlation:** test the expected AI/chip link using all 120 cross-theme pairs, selected-pair scatters and rolling 30/60-day correlations.
-5. **Turning points:** three data-backed checkpoints in the year.
-6. **The path matters:** returns, drawdowns and recovery, with full-path/endpoints comparison.
-7. **Looking back:** theme observations and a company recap.
+1. **Overview:** the year in one page: motivation, four findings, theme paths with the turning points, mean vs. median by theme, return vs. drawdown for all 35 companies, chapter guide.
+2. **The watchlist:** theme groups and company selection; pick the company to follow.
+3. **Same start, very different destinations:** theme paths rebased to 100, a date slider and the S&P 500 reference.
+4. **The average hides the members:** every company's return with the mean and median, and a winner-exclusion check.
+5. **AI and chips, loosely linked stocks:** all 120 cross-theme pair correlations, selected-pair scatters and rolling 30/60-day correlations.
+6. **Three turning points:** three data-backed checkpoints in the year.
+7. **The path behind the return:** drawdown, recovery and the full-path/endpoints comparison.
+8. **What the year showed:** theme verdicts and a company recap.
 
 ## What the selected sample shows
 
@@ -39,17 +40,18 @@ The original analysis also includes six market reference series. The story uses 
 ## Rebuild the homepage
 
 ```sh
-python dashboard/story/build_story.py
+python dashboard/story-tableau/build.py
 ```
 
-Python 3.9+ with the standard library is sufficient. This generates a self-contained `docs/index.html` from the committed market data. It works on GitHub Pages without npm, API keys, external chart libraries, or runtime data fetching. See [source and methodology](dashboard/story/README.md).
+Python 3.9+ with the standard library is sufficient. This generates a self-contained `docs/index.html` from the committed market data. It works on GitHub Pages without npm, API keys, external chart libraries, or runtime data fetching. See [source and definitions](dashboard/story-tableau/README.md). The earlier narrative homepage can still be rebuilt with `python dashboard/story/build_story.py`.
 
 ## Repository
 
 ```text
 analysis/                 Original Python research, notebook, market CSVs and outputs
-dashboard/story/          Current narrative homepage source and build script
-dashboard/src/            Earlier dashboard source, retained for reference
+dashboard/story-tableau/  Current homepage source (Tableau-style story dashboard) and build script
+dashboard/story/          Earlier narrative homepage source, retained for reference
+dashboard/src/            Earlier React dashboard source, retained for reference
 docs/index.html           Current self-contained GitHub Pages homepage
 ```
 
@@ -82,5 +84,5 @@ This project is for education and portfolio demonstration. Historical results do
 
 ## Correlation validation
 
-Run `node dashboard/story/test-correlation.cjs` after building. It reconciles every one of the original 231 pair coefficients within their four-decimal rounding tolerance and checks zero-variance handling, rolling-window boundaries and English-only page output. Pair coefficients use 250 aligned daily returns, not price levels; group averages of coefficients are distinct from correlations of equal-weight average daily returns.
+Run `node dashboard/story/test-correlation.cjs` after building the earlier narrative page. It reconciles every one of the original 231 pair coefficients within their four-decimal rounding tolerance and checks zero-variance handling, rolling-window boundaries and English-only page output. Pair coefficients use 250 aligned daily returns, not price levels; group averages of coefficients are distinct from correlations of equal-weight average daily returns.
 

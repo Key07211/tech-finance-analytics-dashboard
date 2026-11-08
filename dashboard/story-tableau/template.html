@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A seven-point data story on 35 AI, semiconductor and new-energy stocks, May 2025 to May 2026: returns, dispersion, correlation, turning points and drawdowns.">
+<title>Future Expectations, Market Realities · Market Yearbook 2025–26</title>
+<style>/* STYLES */</style>
+</head>
+<body>
+<a class="skip" href="#canvas">Skip to the dashboard</a>
+<div class="story">
+  <header class="story-header">
+    <div class="title-row">
+      <div>
+        <h1>Future Expectations, Market Realities</h1>
+        <p class="subtitle">35 AI, semiconductor and new-energy stocks · May 12, 2025 – May 11, 2026 · 251 trading days · Saved daily Close prices (Yahoo Finance via yfinance)</p>
+      </div>
+      <div class="title-right">
+        <div class="follow" aria-live="polite">Following <b id="following"></b></div>
+        <a class="src" href="https://github.com/Key07211/tech-finance-analytics-dashboard" target="_blank" rel="noopener">Data &amp; code ↗</a>
+      </div>
+    </div>
+    <nav class="story-nav" aria-label="Story points">
+      <button class="arrow" id="prev" aria-label="Previous story point">‹</button>
+      <ol id="points"></ol>
+      <button class="arrow" id="next" aria-label="Next story point">›</button>
+    </nav>
+  </header>
+
+  <main class="dash">
+    <section id="canvas" class="canvas" aria-live="polite"></section>
+    <aside id="shelf" class="shelf" aria-label="Filters and legend"></aside>
+  </main>
+
+  <footer>
+    <details class="method">
+      <summary>Data &amp; definitions</summary>
+      <ul>
+        <li><b>Snapshot.</b> May 12, 2025 – May 11, 2026, 251 trading days, 35 stocks plus the S&amp;P 500. The page uses the Close series saved in this repository (downloaded with yfinance; the download did not pin the adjustment convention, so dividends are not separately accounted for).</li>
+        <li><b>Return.</b> Last Close ÷ first Close − 1. Rebased value = 100 × Close<sub>t</sub> ÷ Close<sub>0</sub>.</li>
+        <li><b>Theme path.</b> Mean of the members' rebased values: equal money in each company at the start, then held with no rebalancing. The S&amp;P 500 is a price index, not an investable product.</li>
+        <li><b>Drawdown.</b> Close ÷ running high − 1; the maximum drawdown is its lowest point. Recovery is the first later day that regains the prior high; "not recovered" means through May 11, 2026 only. Days are calendar days.</li>
+        <li><b>Correlation.</b> Pearson r on 250 aligned daily returns (Close<sub>t</sub> ÷ Close<sub>t−1</sub> − 1). Pair averages weight every pair equally; the group figure correlates the equal-weight average daily returns of the 12 AI and 10 semiconductor stocks. Rolling values use the preceding 30 or 60 daily returns. Same-direction days count days when both returns have the same sign.</li>
+        <li><b>Boundaries.</b> A personal watchlist, not an industry index. Historical description only: no forecasts, no causal claims, no trading signal.</li>
+      </ul>
+      <p><a href="https://github.com/Key07211/tech-finance-analytics-dashboard/tree/main/analysis/data">Daily data ↗</a> · <a href="https://github.com/Key07211/tech-finance-analytics-dashboard/tree/main/analysis">Full analysis ↗</a></p>
+    </details>
+    <p class="colophon"><b>Key07211 · Market Yearbook 2025–26</b> · Personal research · Use ← → to move between story points</p>
+  </footer>
+</div>
+<div id="tip" role="tooltip"></div>
+<noscript><p style="padding:16px">Enable JavaScript for the interactive dashboard. In this sample all 10 semiconductor stocks rose, 5 of 12 AI stocks and 8 of 13 new-energy stocks. The average AI–semiconductor pair correlation of daily returns was about 0.21.</p></noscript>
+<script id="market-data" type="application/json">/* DATA */</script>
+<script>/* APP */</script>
+</body>
+</html>
