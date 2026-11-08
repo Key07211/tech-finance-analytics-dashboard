@@ -13,7 +13,7 @@ fonts, no runtime network requests.
 | `build.py` | Reads `analysis/data/*.csv`, validates the snapshot, embeds data + CSS + JS into the template and writes `docs/index.html`. Prints the headline numbers for a cross-check against `analysis/charts/`. |
 | `template.html` | Page skeleton with the `/* STYLES */`, `/* DATA */` and `/* APP */` markers and the "Data & definitions" footer. |
 | `style.css` | Tableau-like chrome: light canvas, white worksheets, thin borders, filter shelf, tooltips. |
-| `app.js` | All computation (returns, theme paths, drawdowns, correlations) and all rendering. The author's note on the overview page is the `OVERVIEW_NOTE` constant; chapter blurbs are `CHAPTERS`. |
+| `app.js` | All computation (returns, theme paths, drawdowns, correlations) and all rendering. Every visible string lives in the `STR` dictionary (`en` and `zh`); the author's note on the overview page is `STR.<lang>.ov.note`, chapter blurbs are `STR.<lang>.ov.chapterList`. |
 
 ## Rebuild
 
@@ -42,6 +42,13 @@ Every worksheet has a "⊞ Data" toggle (table view of the plotted values), hove
 (crosshair on lines, per-mark on bars, cells and dots), keyboard navigation (← → between story
 points, Tab/Enter on bars and cells) and a collapsible "Data & definitions" footer. The URL hash
 (`#1` … `#8`) addresses a story point.
+
+## Languages
+
+The page is bilingual. The EN / 中文 toggle in the header switches every string, company name,
+date format and axis label; the choice is kept in `localStorage` and mirrored in the URL
+(`?lang=zh`), so a Chinese link can be shared. First visit: URL parameter, then stored choice,
+then the browser language (Chinese browsers start in Chinese), otherwise English.
 
 ## Definitions
 

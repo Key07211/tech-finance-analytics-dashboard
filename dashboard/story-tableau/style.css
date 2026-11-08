@@ -37,6 +37,16 @@ h1{margin:0;font-size:22px;font-weight:600;color:var(--ink-strong);letter-spacin
 .arrow:disabled{color:#c7ccd3;cursor:default}
 .arrow:not(:disabled):hover{background:#f0f4f9}
 
+
+/* language toggle (segmented control) */
+.lang{display:inline-flex;border:1px solid #c7ccd3;border-radius:3px;overflow:hidden}
+.lang button{border:0;background:#fff;color:#555;padding:3px 10px;font-size:12px;cursor:pointer;line-height:1.4}
+.lang button+button{border-left:1px solid #c7ccd3}
+.lang button:hover{background:#f0f4f9}
+.lang button[aria-pressed=true]{background:var(--accent);color:#fff;font-weight:600}
+.lang button:focus-visible{outline:2px solid var(--ink-strong);outline-offset:-2px}
+html[lang="zh-CN"] body{font-family:"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans CJK SC","Helvetica Neue",Helvetica,Arial,sans-serif}
+
 /* ---------- layout ---------- */
 .dash{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:10px;margin-top:10px;align-items:start}
 .canvas{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:10px;min-width:0}

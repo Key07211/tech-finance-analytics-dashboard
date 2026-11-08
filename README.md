@@ -6,7 +6,7 @@
 
 I am curious about AI, semiconductors and new energy. These fields caught my attention through the investment and optimism surrounding their future. How would those expectations show up in the share prices of listed companies?
 
-This project explores **35 selected listed companies** across **251 trading days, May 12, 2025–May 11, 2026**. The GitHub Pages homepage is an eight-point, Tableau-style interactive story dashboard for readers without a finance background: an overview page, then seven chapters.
+This project explores **35 selected listed companies** across **251 trading days, May 12, 2025–May 11, 2026**. The GitHub Pages homepage is an eight-point, Tableau-style interactive story dashboard for readers without a finance background: an overview page, then seven chapters. It is bilingual (English / 中文; toggle in the header, or `?lang=zh` in the URL).
 
 1. **Overview:** the year in one page: motivation, four findings, theme paths with the turning points, mean vs. median by theme, return vs. drawdown for all 35 companies, chapter guide.
 2. **The watchlist:** theme groups and company selection; pick the company to follow.
